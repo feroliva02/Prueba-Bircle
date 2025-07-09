@@ -9,7 +9,7 @@ openai_ef = embedding_functions.OpenAIEmbeddingFunction(
   api_key= os.getenv("OPENAI_API_KEY"), 
   model_name = 'text-embedding-ada-002')
 
-#Configuramos API KEY y generamos una respuesta llamando a la api de OpenAI, tomando la primer opcion que da.
+#Configuramos API KEY y generamos una respuesta llamando a la api de OpenAI, tomando la primer opcion que da (choices[0]).
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def generate_answer(question, documents):
@@ -49,7 +49,7 @@ for filename in files:
     metadatas = [{'nombre_archivo': filename}]
   )
 
-#Hacemos una funcion que recibe una pregunta y una cantidad K y busca en la coleccion los resultados (K) mas relevantes
+#Funcion que recibe una pregunta y una cantidad K, y busca en la coleccion los resultados (K) mas relevantes
 def query_documents(pregunta, k=3):
   resultados = collection.query(
     query_texts = [pregunta],
